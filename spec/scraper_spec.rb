@@ -4,11 +4,11 @@ RSpec.describe FronkinBandcampScraper::Scraper do
     let(:scraper) { FronkinBandcampScraper::Scraper.new(url) }
 
     it 'scrapes the release title' do
-      expect(scraper.release_title).to eq 'lava land'
+      expect(scraper.release.title).to eq 'lava land'
     end
 
     it 'scrapes the artist name' do
-      expect(scraper.artist_name).to eq 'piglet'
+      expect(scraper.artist.name).to eq 'piglet'
     end
   end
 end
