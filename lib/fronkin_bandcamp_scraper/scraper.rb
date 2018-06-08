@@ -17,6 +17,8 @@ module FronkinBandcampScraper
     def scrape
       @release = Release.new do |r|
         r.title = doc.css('div#name-section h2.trackTitle').text.strip
+        r.date = doc.css('div.tralbumData.tralbum-credits meta').attribute('content').value
+        r.cover = doc.css('div#tralbumArt a.popupImage').attribute('href').value
       end
 
       @artist = Artist.new do |a|

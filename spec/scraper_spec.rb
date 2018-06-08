@@ -7,6 +7,14 @@ RSpec.describe FronkinBandcampScraper::Scraper do
       it 'scrapes the title' do
         expect(scraper.release.title).to eq 'lava land'
       end
+
+      it 'scrapes the date' do
+        expect(scraper.release.date).to eq '20050101'
+      end
+
+      it 'scrapes the cover' do
+        expect(scraper.release.cover).to eq 'https://f4.bcbits.com/img/a0461781564_10.jpg'
+      end
     end
 
     context 'for an artist' do
