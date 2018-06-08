@@ -21,6 +21,8 @@ module FronkinBandcampScraper
 
       @artist = Artist.new do |a|
         a.name = doc.css('div#bio-container span.title').text
+        a.photo = doc.css('div#bio-container div.bio-pic a.popupImage').attribute('href').value
+        a.location = doc.css('div#bio-container span.location').text
       end
     end
   end
