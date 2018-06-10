@@ -4,31 +4,37 @@ RSpec.describe FronkinBandcampScraper::Scraper do
     let(:scraper) { FronkinBandcampScraper::Scraper.new(url) }
 
     context 'for a release' do
+      subject(:release) { scraper.release }
+
       it 'scrapes the title' do
-        expect(scraper.release.title).to eq 'lava land'
+        expect(release.title).to eq 'lava land'
       end
 
       it 'scrapes the date' do
-        expect(scraper.release.date).to eq '20050101'
+        expect(release.date).to eq '20050101'
       end
 
       it 'scrapes the cover' do
-        expect(scraper.release.cover).to eq 'https://f4.bcbits.com/img/a0461781564_10.jpg'
+        expect(release.cover).to eq 'https://f4.bcbits.com/img/a0461781564_10.jpg'
       end
 
-      subject(:tracks) { scraper.release.tracks }
+      subject(:tracks) { release.tracks }
 
       it 'scrapes the track numbers' do
         expect(tracks.map(&:number)).to eq (1..6).to_a
       end
 
       it 'scrapes the track titles' do
-        expect(tracks.map(&:title)).to include('bug stomp')
+        expect(tracks.map(&:title)).to include 'bug stomp'
       end
 
       it 'scrapes the track durations' do
         bug_stomp = tracks.first
         expect(bug_stomp.duration).to eq '03:36'
+      end
+
+      it 'scrapes the tags' do
+        expect(release.tags).to include 'math rock'
       end
     end
 

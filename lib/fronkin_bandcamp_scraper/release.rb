@@ -2,7 +2,7 @@ require 'fronkin_bandcamp_scraper/track'
 
 module FronkinBandcampScraper
   class Release
-    attr_accessor :doc, :title, :date, :formats, :cover, :tracks, :tags, :fans
+    attr_accessor :doc, :title, :date, :cover, :tracks, :tags, :formats, :fans
 
     def initialize(doc)
       @doc = doc
@@ -10,6 +10,7 @@ module FronkinBandcampScraper
       @date = doc.css('div.tralbumData.tralbum-credits meta').attribute('content').value
       @cover = doc.css('div#tralbumArt a.popupImage').attribute('href').value
       @tracks = scrape_tracks
+      @tags = doc.css('div.tralbumData.tralbum-tags a.tag').map(&:text)
     end
 
     private
