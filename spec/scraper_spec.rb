@@ -15,6 +15,21 @@ RSpec.describe FronkinBandcampScraper::Scraper do
       it 'scrapes the cover' do
         expect(scraper.release.cover).to eq 'https://f4.bcbits.com/img/a0461781564_10.jpg'
       end
+
+      subject(:tracks) { scraper.release.tracks }
+
+      it 'scrapes the track numbers' do
+        expect(tracks.map(&:number)).to eq (1..6).to_a
+      end
+
+      it 'scrapes the track titles' do
+        expect(tracks.map(&:title)).to include('bug stomp')
+      end
+
+      it 'scrapes the track durations' do
+        bug_stomp = tracks.first
+        expect(bug_stomp.duration).to eq '03:36'
+      end
     end
 
     context 'for an artist' do
