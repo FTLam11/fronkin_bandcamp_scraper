@@ -34,8 +34,7 @@ Or install it yourself as:
 Given a bandcamp release URL, initialize a `Scraper` object like so:
 
 ```ruby
-url =
-'https://clevergirl.bandcamp.com/album/no-drum-and-bass-in-the-jazz-room'
+url = 'https://clevergirl.bandcamp.com/album/no-drum-and-bass-in-the-jazz-room'
 scraper = FronkinBandcampScraper::Scraper.new(url)
 ```
 
