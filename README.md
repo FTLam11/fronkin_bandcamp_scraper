@@ -40,7 +40,7 @@ scraper = FronkinBandcampScraper::Scraper.new(url)
 ```
 
 A `FronkingBandcampScraper::Scraper` has two public methods `#artist`
-and `#release`.
+and `#release`, each with their own attributes.
 
 ### Artist
 
