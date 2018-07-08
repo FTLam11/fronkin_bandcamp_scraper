@@ -18,6 +18,10 @@ RSpec.describe FronkinBandcampScraper::Scraper do
         expect(release.cover).to eq 'https://f4.bcbits.com/img/a0461781564_10.jpg'
       end
 
+      it 'scrapes the formats' do
+        expect(release.formats).not_to be_empty
+      end
+
       subject(:tracks) { release.tracks }
 
       it 'scrapes the track numbers' do
