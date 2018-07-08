@@ -16,10 +16,10 @@ module FronkinBandcampScraper
 
     def scrape
       @release = Release.new(doc)
-      @artist = Artist.new do |a|
-        a.name = doc.css('div#bio-container span.title').text
-        a.photo = doc.css('div#bio-container div.bio-pic a.popupImage').attribute('href').value
-        a.location = doc.css('div#bio-container span.location').text
+      @artist = Artist.new do |artist|
+        artist.name = doc.css('div#bio-container span.title').text
+        artist.photo = doc.css('div#bio-container div.bio-pic a.popupImage').attribute('href').value
+        artist.location = doc.css('div#bio-container span.location').text
       end
     end
   end
