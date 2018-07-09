@@ -1,4 +1,4 @@
-# FronkinBandcampScraper
+# FronkinBandcamp
 
 Maybe you thought you'd flop your way to a championship.
 
@@ -16,7 +16,7 @@ before you try anything, thanks!
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'fronkin_bandcamp_scraper'
+gem 'fronkin_bandcamp'
 ```
 
 And then execute:
@@ -25,7 +25,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install fronkin_bandcamp_scraper
+    $ gem install fronkin_bandcamp
 
 ## II. Usage
 
@@ -35,10 +35,10 @@ Given a bandcamp release URL, initialize a `Scraper` object like so:
 
 ```ruby
 url = 'https://clevergirl.bandcamp.com/album/no-drum-and-bass-in-the-jazz-room'
-scraper = FronkinBandcampScraper::Scraper.new(url)
+scraper = FronkinBandcamp::Scraper.new(url)
 ```
 
-A `FronkingBandcampScraper::Scraper` has two public methods `#artist`
+A `FronkingBandcamp::Scraper` has two public methods `#artist`
 and `#release`, each with their own attributes.
 
 ### Artist
@@ -58,22 +58,22 @@ scraper.release.cover # Release cover
 scraper.release.tracks
 
 [
-    [0] #<Struct:FronkinBandcampScraper::Track:0x7fe59082b158
+    [0] #<Struct:FronkinBandcamp::Track:0x7fe59082b158
         duration = "05:28",
         number = 1,
         title = "Elm"
     >,
-    [1] #<Struct:FronkinBandcampScraper::Track:0x7fe59082b0e0
+    [1] #<Struct:FronkinBandcamp::Track:0x7fe59082b0e0
         duration = "06:09",
         number = 2,
         title = "ohmygodiloveyoupleasedontleaveme"
     >,
-    [2] #<Struct:FronkinBandcampScraper::Track:0x7fe59082b0b8
+    [2] #<Struct:FronkinBandcamp::Track:0x7fe59082b0b8
         duration = "05:07",
         number = 3,
         title = "Sleepyhead Symphony"
     >,
-    [3] #<Struct:FronkinBandcampScraper::Track:0x7fe59082b040
+    [3] #<Struct:FronkinBandcamp::Track:0x7fe59082b040
         duration = "05:28",
         number = 4,
         title = "Teleblister"
@@ -81,13 +81,21 @@ scraper.release.tracks
 ]
 
 scraper.release.tags # ["world", "London"]
+
+scraper.release.formats
+
+[
+    [0] #<FronkinBandcamp::Format:0x007f864913c500 @name="Subcription",
+@product="Streaming + Download", @description=nil, @product_images=[],
+@price="Buy Digital Album   $5 USD  or more", @is_available=true>
+]
 ```
 
 ## III. Miscellaneous
 
 ### TODO
 
-* Scrape release formats
+* ~~Scrape release formats~~
 * Scrape release fans
 * Add CLI
 
