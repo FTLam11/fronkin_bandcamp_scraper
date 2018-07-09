@@ -1,3 +1,6 @@
+[![Build
+Status](https://travis-ci.org/FTLam11/fronkin_bandcamp_scraper.svg?branch=master)](https://travis-ci.org/FTLam11/fronkin_bandcamp_scraper)
+
 # FronkinBandcamp
 
 Maybe you thought you'd flop your way to a championship.
