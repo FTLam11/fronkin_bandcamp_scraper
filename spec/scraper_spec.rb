@@ -1,7 +1,7 @@
-RSpec.describe FronkinBandcampScraper::Scraper do
+RSpec.describe FronkinBandcamp::Scraper do
   context 'with a Bandcamp release URL' do
     let(:url) { 'https://piglet.bandcamp.com/album/lava-land' }
-    let(:scraper) { FronkinBandcampScraper::Scraper.new(url) }
+    let(:scraper) { FronkinBandcamp::Scraper.new(url) }
 
     context 'for a release' do
       subject(:release) { scraper.release }
@@ -16,6 +16,10 @@ RSpec.describe FronkinBandcampScraper::Scraper do
 
       it 'scrapes the cover' do
         expect(release.cover).to eq 'https://f4.bcbits.com/img/a0461781564_10.jpg'
+      end
+
+      it 'scrapes the formats' do
+        expect(release.formats).not_to be_empty
       end
 
       subject(:tracks) { release.tracks }

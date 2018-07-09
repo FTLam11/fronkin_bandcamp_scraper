@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fronkin_bandcamp_scraper (0.1.0)
+    fronkin_bandcamp (0.1.0)
       nokogiri (~> 1.8)
 
 GEM
@@ -13,7 +13,7 @@ GEM
     diff-lcs (1.3)
     method_source (0.9.0)
     mini_portile2 (2.3.0)
-    nokogiri (1.8.2)
+    nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
@@ -42,7 +42,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print (~> 1.8)
   bundler (~> 1.16)
-  fronkin_bandcamp_scraper!
+  fronkin_bandcamp!
   pry (~> 0.11)
   pry-byebug (~> 3.6)
   rake (~> 10.0)
