@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "fronkin_bandcamp_scraper"
+require "fronkin_bandcamp"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

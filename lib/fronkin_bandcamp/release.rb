@@ -1,7 +1,7 @@
-require 'fronkin_bandcamp_scraper/track'
-require 'fronkin_bandcamp_scraper/format'
+require 'fronkin_bandcamp/track'
+require 'fronkin_bandcamp/format'
 
-module FronkinBandcampScraper
+module FronkinBandcamp
   class Release
     attr_accessor :doc, :title, :date, :cover, :tracks, :tags, :formats, :fans
 

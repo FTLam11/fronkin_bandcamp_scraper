@@ -1,7 +1,7 @@
-RSpec.describe FronkinBandcampScraper::Scraper do
+RSpec.describe FronkinBandcamp::Scraper do
   context 'with a Bandcamp release URL' do
     let(:url) { 'https://piglet.bandcamp.com/album/lava-land' }
-    let(:scraper) { FronkinBandcampScraper::Scraper.new(url) }
+    let(:scraper) { FronkinBandcamp::Scraper.new(url) }
 
     context 'for a release' do
       subject(:release) { scraper.release }

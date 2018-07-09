@@ -1,4 +1,4 @@
-module FronkinBandcampScraper
+module FronkinBandcamp
   class Artist
     attr_accessor :name, :photo, :location
 

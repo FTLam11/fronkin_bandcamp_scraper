@@ -1,9 +1,9 @@
 require 'open-uri'
 require 'nokogiri'
-require 'fronkin_bandcamp_scraper/release'
-require 'fronkin_bandcamp_scraper/artist'
+require 'fronkin_bandcamp/release'
+require 'fronkin_bandcamp/artist'
 
-module FronkinBandcampScraper
+module FronkinBandcamp
   class Scraper
     attr_reader :doc, :release, :artist
 

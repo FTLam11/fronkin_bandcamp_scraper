@@ -1,4 +1,4 @@
-module FronkinBandcampScraper
+module FronkinBandcamp
   class Format
     attr_accessor :name, :product, :description, :product_images, :price, :is_available
 
