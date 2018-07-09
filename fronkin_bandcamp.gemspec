@@ -1,11 +1,11 @@
 
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'fronkin_bandcamp_scraper/version'
+require 'fronkin_bandcamp/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'fronkin_bandcamp_scraper'
-  spec.version       = FronkinBandcampScraper::VERSION
+  spec.name          = 'fronkin_bandcamp'
+  spec.version       = FronkinBandcamp::VERSION
   spec.authors       = ['Fronk Lom Lom']
   spec.email         = ['ryzingsun11@yahoo.com']
 
