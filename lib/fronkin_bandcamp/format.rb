@@ -10,7 +10,7 @@ module FronkinBandcamp
   using CleanAsFuck
 
   class Format
-    attr_accessor :name, :product, :description, :product_images, :price, :is_available
+    attr_reader :name, :product, :description, :product_images, :price, :is_available
 
     def initialize(choice)
       @name = choice.css('h3.hd span').text.kleanse || 'Subcription'
