@@ -3,7 +3,7 @@ require 'fronkin_bandcamp/format'
 
 module FronkinBandcamp
   class Release
-    attr_reader :title, :date, :cover, :tracks, :tags, :formats, :fans
+    attr_reader :title, :date, :cover, :tracks, :tags, :formats, :description
 
     def initialize(doc)
       @title = doc.css('div#name-section h2.trackTitle').text.strip
@@ -12,6 +12,7 @@ module FronkinBandcamp
       @tracks = scrape_tracks(doc)
       @tags = doc.css('div.tralbumData.tralbum-tags a.tag').map(&:text)
       @formats = scrape_formats(doc)
+      @description = doc.css('div.tralbumData.tralbum-about').text.strip.gsub(/\r/, "\n")
     end
 
     private
