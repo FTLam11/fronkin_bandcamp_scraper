@@ -8,7 +8,7 @@ module FronkinBandcamp
     attr_reader :doc, :release, :artist
 
     def initialize(url)
-      @doc = Nokogiri::HTML(open(url), nil, 'utf-8') { |config| config.noblanks }
+      @doc = Nokogiri::HTML(URI.open(url), nil, 'utf-8') { |config| config.noblanks }
       scrape
     end
 
