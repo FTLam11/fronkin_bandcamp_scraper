@@ -4,7 +4,7 @@ require 'fronkin_bandcamp/format'
 module FronkinBandcamp
   class Release
     attr_reader :title, :date, :cover, :tracks, :tags, :formats, :description,
-      :credits, :album_id
+      :credits, :album_id, :release_id
 
     BARE_CREDITS_NODE_SIZE = 2
 
@@ -18,6 +18,7 @@ module FronkinBandcamp
       @description = doc.css('div.tralbumData.tralbum-about').text.strip.gsub(/\r/, "\n")
       @credits = scrape_credits(doc)
       @album_id = doc.css('meta[property="og:video"]').attr("content").value.match(/album=(?<album_id>\d+)/).named_captures['album_id']
+      @release_id = tags.find { |tag| tag.match(/\Annr/) }&.upcase
     end
 
     private
