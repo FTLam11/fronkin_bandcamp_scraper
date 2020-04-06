@@ -26,6 +26,14 @@ RSpec.describe FronkinBandcamp::Scraper do
         expect(release.description).to be_empty
       end
 
+      it 'scrapes the credits' do
+        expect(release.credits).to be_empty
+      end
+
+      it 'scrapes the album ID' do
+        expect(release.album_id).to eq '1361123475'
+      end
+
       subject(:tracks) { release.tracks }
 
       it 'scrapes the track numbers' do

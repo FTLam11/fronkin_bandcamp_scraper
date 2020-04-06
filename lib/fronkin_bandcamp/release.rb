@@ -3,7 +3,10 @@ require 'fronkin_bandcamp/format'
 
 module FronkinBandcamp
   class Release
-    attr_reader :title, :date, :cover, :tracks, :tags, :formats, :description
+    attr_reader :title, :date, :cover, :tracks, :tags, :formats, :description,
+      :credits, :album_id
+
+    BARE_CREDITS_NODE_SIZE = 2
 
     def initialize(doc)
       @title = doc.css('div#name-section h2.trackTitle').text.strip
@@ -13,6 +16,8 @@ module FronkinBandcamp
       @tags = doc.css('div.tralbumData.tralbum-tags a.tag').map(&:text)
       @formats = scrape_formats(doc)
       @description = doc.css('div.tralbumData.tralbum-about').text.strip.gsub(/\r/, "\n")
+      @credits = scrape_credits(doc)
+      @album_id = doc.css('meta[property="og:video"]').attr("content").value.match(/album=(?<album_id>\d+)/).named_captures['album_id']
     end
 
     private
@@ -26,6 +31,16 @@ module FronkinBandcamp
     def scrape_formats(doc)
       format_choices = doc.css('li.buyItem')
       format_choices.map { |choice| Format.new(choice) }
+    end
+
+    def scrape_credits(doc)
+      child_nodes = doc.css('div.tralbumData.tralbum-credits').children
+
+      if child_nodes.size <= BARE_CREDITS_NODE_SIZE
+        ''
+      else
+        child_nodes[4..-1].text.strip.gsub(/-\W/, '').split(/\r\n/)
+      end
     end
   end
 end
