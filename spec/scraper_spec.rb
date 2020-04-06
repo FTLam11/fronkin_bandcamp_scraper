@@ -11,7 +11,7 @@ RSpec.describe FronkinBandcamp::Scraper do
       end
 
       it 'scrapes the date' do
-        expect(release.date).to eq '20050101'
+        expect(release.date).to eq '1/1/2005'
       end
 
       it 'scrapes the cover' do
