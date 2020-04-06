@@ -3,6 +3,7 @@ require 'fronkin_bandcamp/format'
 
 module FronkinBandcamp
   class Release
+    attr_accessor :bandcamp_url
     attr_reader :title, :date, :cover, :tracks, :tags, :formats, :description,
       :credits, :album_id, :release_id
 
@@ -19,6 +20,7 @@ module FronkinBandcamp
       @credits = scrape_credits(doc)
       @album_id = doc.css('meta[property="og:video"]').attr("content").value.match(/album=(?<album_id>\d+)/).named_captures['album_id']
       @release_id = tags.find { |tag| tag.match(/\Annr/) }&.upcase
+      yield self if block_given?
     end
 
     private
