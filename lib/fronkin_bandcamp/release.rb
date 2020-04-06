@@ -3,7 +3,7 @@ require 'fronkin_bandcamp/format'
 
 module FronkinBandcamp
   class Release
-    attr_accessor :bandcamp_url
+    attr_accessor :bandcamp_url, :artist_name
     attr_reader :title, :date, :cover, :tracks, :tags, :formats, :description,
       :credits, :bandcamp_album_id, :release_id
 
