@@ -4,22 +4,22 @@ require 'fronkin_bandcamp/format'
 module FronkinBandcamp
   class Release
     attr_accessor :bandcamp_url, :artist_name
-    attr_reader :title, :date, :cover, :tracks, :tags, :formats, :description,
-      :credits, :bandcamp_album_id, :release_id
+    attr_reader :title, :date, :description, :credits, :cover, :tracks, :tags,
+      :release_id, :formats, :bandcamp_album_id
 
     BARE_CREDITS_NODE_SIZE = 2
 
     def initialize(doc)
       @title = doc.css('div#name-section h2.trackTitle').text.strip
       @date = Date.parse(doc.css('div.tralbumData.tralbum-credits meta').attribute('content').value).strftime('%-m/%-d/%Y')
+      @description = doc.css('div.tralbumData.tralbum-about').text.strip.gsub(/\r/, "\n")
+      @credits = scrape_credits(doc)
       @cover = doc.css('div#tralbumArt a.popupImage').attribute('href').value
       @tracks = scrape_tracks(doc)
       @tags = doc.css('div.tralbumData.tralbum-tags a.tag').map(&:text)
-      @formats = scrape_formats(doc)
-      @description = doc.css('div.tralbumData.tralbum-about').text.strip.gsub(/\r/, "\n")
-      @credits = scrape_credits(doc)
-      @bandcamp_album_id = doc.css('meta[property="og:video"]').attr("content").value.match(/album=(?<bandcamp_album_id>\d+)/).named_captures['bandcamp_album_id']
       @release_id = tags.find { |tag| tag.match(/\Annr/) }&.upcase
+      @formats = scrape_formats(doc)
+      @bandcamp_album_id = doc.css('meta[property="og:video"]').attr("content").value.match(/album=(?<bandcamp_album_id>\d+)/).named_captures['bandcamp_album_id']
       yield self if block_given?
     end
 
