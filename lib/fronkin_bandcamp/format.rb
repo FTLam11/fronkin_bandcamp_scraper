@@ -1,5 +1,5 @@
 module FronkinBandcamp
-  module CleanAsFuck
+  module StringRefinement
     refine String do
       def kleanse
         strip.gsub!(/\n\s+/, ' ')
@@ -7,7 +7,7 @@ module FronkinBandcamp
     end
   end
 
-  using CleanAsFuck
+  using StringRefinement
 
   class Format
     attr_reader :name, :product, :description, :product_images, :price, :is_available
