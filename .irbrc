@@ -5,5 +5,6 @@ def reload!
   load 'fronkin_bandcamp/scraper.rb'
 end
 
-url = 'https://piglet.bandcamp.com/album/lava-land'
+url = 'https://doncaballero.bandcamp.com/album/what-burns-never-returns'
 scraper = FronkinBandcamp::Scraper.new(url)
+puts scraper.url
