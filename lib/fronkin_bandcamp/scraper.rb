@@ -9,7 +9,7 @@ module FronkinBandcamp
 
     def initialize(url)
       @url = url
-      @doc = Nokogiri::HTML(URI.open(url), nil, 'utf-8') { |config| config.noblanks }
+      @doc = Nokogiri::HTML.parse(URI.open(url), nil, 'utf-8') { |config| config.noblanks }
       scrape
     end
 
