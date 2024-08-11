@@ -11,7 +11,7 @@ module FronkinBandcamp
 
     def initialize(doc)
       @title = doc.css('div#name-section h2.trackTitle').text.strip
-      @date = Date.parse(doc.css('div.tralbumData.tralbum-credits meta').attribute('content').value).strftime('%-m/%-d/%Y')
+      @date = Date.parse(doc.css('div.tralbumData.tralbum-credits').children[0].to_s.strip[9..-1]).strftime('%-m/%-d/%Y')
       @description = doc.css('div.tralbumData.tralbum-about').text.strip.gsub(/\r/, "\n")
       @credits = scrape_credits(doc)
       @cover = doc.css('div#tralbumArt a.popupImage').attribute('href').value
