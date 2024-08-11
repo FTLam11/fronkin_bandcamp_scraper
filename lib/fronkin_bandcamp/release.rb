@@ -26,7 +26,7 @@ module FronkinBandcamp
     private
 
     def scrape_tracks(doc)
-      track_titles = doc.css('table#track_table td.title-col span[itemprop="name"]').map(&:text)
+      track_titles = doc.css('table#track_table td.title-col span.track-title').map(&:text)
       track_durations = doc.css('table#track_table td.title-col span.time').map { |node| node.text.strip }
       track_titles.zip(track_durations).map.with_index { |t, idx| Track.new(idx + 1, t[0], t[1]) }
     end
