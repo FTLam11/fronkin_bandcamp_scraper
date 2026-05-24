@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'ostruct', '~> 0.6'
 
   spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'rake', '~> 13.0'
-  spec.add_development_dependency 'rspec', '~> 3.7'
-  spec.add_development_dependency 'awesome_print', '~> 1.8'
+  spec.add_development_dependency 'rake', '~> 13.4'
+  spec.add_development_dependency 'rspec', '~> 3.13'
+  spec.add_development_dependency 'awesome_print', '~> 1.9'
 end
